@@ -1,8 +1,15 @@
 import json 
 
 file = open('ucaccmet2j_python_16_1\precipitation.json')
-
 precipitation_data = json.load(file)
+file_ = open('ucaccmet2j_python_16_1/stations.csv')
+station_codes = file_.read()
+print(station_codes)
+
+for each_station in precipitation_data:  
+    for 
+
+
 
 seattle_values = []
 
@@ -35,6 +42,7 @@ print(total_monthly_precipitation)
 with open('results.json', 'w', encoding='utf-8') as file: 
     json.dump(total_monthly_precipitation, file, indent = 4)
 
+#2
 
 total_yearly_precipitation = sum(total_monthly_precipitation)
 print(total_yearly_precipitation)
