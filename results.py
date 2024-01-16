@@ -24,20 +24,29 @@ total_monthly_precipitation = []
 months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 for x in months: 
-    sum = 0
+    sum_ = 0
     for input in seattle_values:
         if x == input['month']:
-            sum += input['value']
-    total_monthly_precipitation.append(sum)
+            sum_ += input['value']
+    total_monthly_precipitation.append(sum_)
     
 print(total_monthly_precipitation)
 
-# for inidividual_month_value in seattle_values: 
-#     month = inidividual_month_value['month'] 
-#     if month in total_monthly_precipitation: 
-#         total_monthly_precipitation[month] = total_monthly_precipitation[month]+ inidividual_month_value['value']
-#     else: 
-#         total_monthly_precipitation[month] = inidividual_month_value['value']
-
 with open('results.json', 'w', encoding='utf-8') as file: 
     json.dump(total_monthly_precipitation, file, indent = 4)
+
+
+total_yearly_precipitation = sum(total_monthly_precipitation)
+print(total_yearly_precipitation)
+
+relative_monthly_precipitation = []
+
+for part_month in total_monthly_precipitation: 
+    relative = part_month/ total_yearly_precipitation
+    relative_monthly_precipitation.append(relative) 
+
+print(relative_monthly_precipitation) 
+
+with open('results.json', 'w', encoding='utf-8') as file: 
+    json.dump(relative_monthly_precipitation, file, indent = 4)
+
